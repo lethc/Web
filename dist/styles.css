@@ -98,3 +98,62 @@
 @media(prefers-reduced-motion:reduce){
   .social,.social.whatsapp{animation:none!important}
 }
+
+.hero-description-compact{display:none}
+@media(max-width:360px){.area-link>span{display:none}}
+/* Keep the wireframe's horizontal groups on phones, with less secondary copy. */
+@media(max-width:760px){
+  html{scroll-padding-top:12px}
+  .header{min-height:72px;justify-content:center;padding:8px 14px}
+  .brand-logo-header{height:64px}
+  .header nav,.header-cta,.mobile-contact{display:none}
+  .hero-inner{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;padding:24px 16px;align-items:center}
+  .hero-copy,.hero-visual{min-width:0}
+  .hero-copy>.eyebrow,.hero-description-full,.hero-actions,.hero-bottom,.vertical-note,.video-sticker,.visual-spark{display:none}
+  .hero-copy h1{font-size:clamp(24px,5.6vw,40px);line-height:1.12;letter-spacing:-1px;margin:0 0 18px}
+  .hero-copy h1 em:after{height:5px;bottom:-6px;border-top-width:2px}
+  .hero-copy>.hero-description-compact{display:block;font-size:clamp(12px,2.7vw,16px);line-height:1.5;margin:0}
+  .experience{gap:8px;margin-top:14px;padding-top:10px}
+  .experience-number{font-size:26px;letter-spacing:-1px}
+  .experience-number span{font-size:18px}
+  .experience>span:last-child{font-size:11px;line-height:1.4}
+  .experience br{display:none}
+  .hero-visual{width:100%;max-width:240px;margin:0;transform:none;justify-self:end;align-self:center}
+  .video-frame{transform:none;border-width:3px;border-radius:12px;box-shadow:0 10px 30px #00254f18}
+  .video-cover{padding:10px 6px;justify-content:flex-end;gap:12px;background:linear-gradient(transparent 65%,#001b3ebf)}
+  .video-top,.video-bottom small,.video-bottom b{display:none}
+  .video-cover .play-circle{width:34px;height:34px;font-size:23px;box-shadow:0 0 0 5px #ffffff25}
+  .video-bottom>span{margin:0;padding:0;border:0;display:block;text-align:center;font-size:10px;letter-spacing:0}
+  .video-bottom>span>span{display:none}
+  .section-wrap{padding-left:12px;padding-right:12px}
+  .areas{padding-top:26px;padding-bottom:28px}
+  .section-heading{margin-bottom:17px;text-align:center}
+  .section-heading .eyebrow,.section-heading>p{display:none}
+  .section-heading h2{font-size:clamp(20px,4.6vw,28px);margin:0;letter-spacing:-.7px}
+  .area-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .area-card{padding:0;border-radius:8px;min-width:0}
+  .card-label,.portrait-tag,.card-bottom>p{display:none}
+  .area-card h3{font-size:clamp(12px,3vw,19px);letter-spacing:-.3px;line-height:1.3;margin:0;min-height:44px;display:flex;align-items:center;justify-content:center;padding:8px 3px}
+  .portrait{margin:0;height:auto;aspect-ratio:3/4;background-size:300% auto;background-position-y:10%}
+  .area-link{min-height:48px;margin:0;padding:8px 4px;justify-content:center;gap:3px;font-size:clamp(11px,2.7vw,14px);font-weight:650;letter-spacing:-.25px;border-radius:0 0 8px 8px;white-space:nowrap}
+  .area-link>span{width:15px;height:18px;flex-shrink:0;background:transparent!important;color:var(--green)!important}
+  .area-link svg{width:14px;height:14px}
+  .area-link::after{display:none}
+  .community{padding:26px 0 24px}
+  .community-intro{text-align:center}
+  .community-intro>.eyebrow,.community-intro>p,.small-spark{display:none}
+  .community h2{font-size:clamp(20px,4.6vw,28px);letter-spacing:-.7px;line-height:1.35;margin:0}
+  .community h2 br{display:none}
+  .community h2 em::before{content:' '}
+  .social-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:20px}
+  .social,.social.whatsapp{grid-column:auto;padding:12px 2px 10px;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:84px;gap:9px;text-align:center}
+  .social-top,.whatsapp .social-top{position:static;display:flex;justify-content:center;min-height:0;height:auto;margin:0}
+  .social-top>svg,.whatsapp .social-top>svg{position:static;width:32px!important;height:32px!important;padding:6px;border-radius:10px;flex-shrink:0}
+  .social h3,.whatsapp h3{font-size:clamp(10px,2.55vw,14px);line-height:1.3;letter-spacing:-.3px;margin:0;font-weight:650}
+  .social p,.social-action,.social-badge{display:none}
+  .social::after{opacity:.15}
+  .footer{padding-top:14px;padding-bottom:14px;flex-wrap:nowrap;justify-content:space-between;gap:10px}
+  .brand-logo-footer{height:48px}
+  .footer p{display:none}
+  .footer>span{font-size:11px}
+}
