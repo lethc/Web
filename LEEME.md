@@ -24,6 +24,8 @@ El halo de “Asesoría gratis” usa un verde bosque más oscuro. La sección d
 
 Al ampliar el video, este aparece como una tarjeta vertical flotante sobre la página. El fondo permanece visible y atenuado para conservar el contexto, mientras el reproductor activa sonido y controles.
 
+El reproductor intenta iniciar con audio. Cuando el navegador bloquea el sonido automático, muestra un botón para activarlo con un toque; después conserva esa elección al ampliar, cerrar y seguir navegando. Al salir del encabezado durante el desplazamiento, el mismo video se convierte en una tarjeta flotante compacta y vuelve automáticamente a su posición al regresar arriba.
+
 En teléfonos, el texto y el video se mantienen lado a lado, las tres carreras comparten una fila y los cinco contactos otra. Se ocultan textos secundarios, adornos y el botón fijo inferior para conservar una distribución compacta. Los enlaces mantienen su área táctil y el video sigue ampliándose al tocarlo.
 
 Las tarjetas de WhatsApp, Instagram, Facebook, TikTok y YouTube usan los colores oficiales de cada plataforma. Los enlaces sociales y las llamadas de contacto incorporan entrada escalonada, elevación, aro expansivo y respuesta al toque. Las animaciones se desactivan cuando el dispositivo solicita movimiento reducido.

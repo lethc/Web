@@ -10,7 +10,7 @@
         />
         <title>Tesis GAMT — Tu siguiente gran paso</title>
         <link rel="icon" type="image/png" href="assets/logo-gamt.png" />
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="styles.css?v=5" />
     </head>
     <body>
         <header class="header">
@@ -85,7 +85,6 @@
                                 height="1920"
                                 playsinline
                                 autoplay
-                                muted
                                 loop
                                 preload="auto"
                                 poster="assets/video-poster.jpg"
@@ -112,6 +111,16 @@
                                         >Toca para ampliar <span>↗</span></span
                                     ></span
                                 >
+                            </button>
+                            <button
+                                id="video-sound-toggle"
+                                class="video-sound-toggle"
+                                type="button"
+                                aria-label="Activar sonido del video"
+                                aria-pressed="false"
+                            >
+                                <span class="sound-icon" aria-hidden="true">🔇</span>
+                                <span class="sound-label">Activar sonido</span>
                             </button>
                         </div>
                         <div class="video-sticker">
@@ -310,7 +319,7 @@
                                 <svg><use href="#external" /></svg></span></a
                         ><a
                             class="social tiktok"
-                            href="https://www.tiktok.com/@gamt.tecnologia"
+                            href="https://www.tiktok.com/@tesisgamt.arequipa?_r=1&_t=ZS-9A8j8MucRtw"
                             target="_blank"
                             rel="noopener"
                             ><div class="social-top">
@@ -379,6 +388,6 @@
             </div>
             <div class="video-dialog-player"></div>
         </dialog>
-        <script src="app.js"></script>
+        <script src="app.js?v=5"></script>
     </body>
 </html>

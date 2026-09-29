@@ -1,24 +1,67 @@
 const video = document.getElementById('intro-video');
 const cover = document.getElementById('video-cover');
+const soundToggle = document.getElementById('video-sound-toggle');
 const videoDialog = document.getElementById('video-dialog');
 const videoHome = video.parentElement;
+const videoAnchor = document.querySelector('.hero-visual');
 const player = videoDialog.querySelector('.video-dialog-player');
 let previousOverflow = '';
-video.muted = true;
-video.play().catch(() => {});
+let heroVideoIsVisible = true;
+let soundEnabled = false;
+
+const updateSoundButton = () => {
+  const soundOn = !video.muted;
+  soundToggle.setAttribute('aria-pressed', String(soundOn));
+  soundToggle.setAttribute('aria-label', soundOn ? 'Silenciar video' : 'Activar sonido del video');
+  soundToggle.querySelector('.sound-icon').textContent = soundOn ? '🔊' : '🔇';
+  soundToggle.querySelector('.sound-label').textContent = soundOn ? 'Sonido activo' : 'Activar sonido';
+};
+
+const startVideo = async () => {
+  video.muted = false;
+  try {
+    await video.play();
+    soundEnabled = true;
+  } catch {
+    // Browsers usually require one user gesture before autoplay with sound.
+    if (!soundEnabled) {
+      video.muted = true;
+      await video.play().catch(() => {});
+    }
+  }
+  updateSoundButton();
+};
+
+startVideo();
+
+soundToggle.addEventListener('click', async () => {
+  soundEnabled = soundToggle.getAttribute('aria-pressed') !== 'true';
+  video.muted = !soundEnabled;
+  await video.play().catch(() => {});
+  updateSoundButton();
+});
+
+if ('IntersectionObserver' in window) {
+  const floatingObserver = new IntersectionObserver(([entry]) => {
+    heroVideoIsVisible = entry.isIntersecting;
+    videoHome.classList.toggle('is-floating', !heroVideoIsVisible && !videoDialog.open);
+  }, { threshold: .18 });
+  floatingObserver.observe(videoAnchor);
+}
 
 
 cover.addEventListener('click', async () => {
   if (videoDialog.open) return;
   previousOverflow = document.documentElement.style.overflow;
+  videoHome.classList.remove('is-floating');
   player.append(video);
   video.controls = true;
+  soundEnabled = true;
   video.muted = false;
   videoDialog.showModal();
   document.documentElement.style.overflow = 'hidden';
   try {
     await video.play();
-    if (!videoDialog.open) video.muted = true;
   } catch {
     // Native controls remain available if the browser requires another tap.
   }
@@ -30,10 +73,11 @@ videoDialog.addEventListener('click', event => {
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) videoDialog.close();
 });
 videoDialog.addEventListener('close', () => {
-  video.muted = true;
   video.controls = false;
   videoHome.prepend(video);
   video.play().catch(() => {});
+  videoHome.classList.toggle('is-floating', !heroVideoIsVisible);
+  updateSoundButton();
   document.documentElement.style.overflow = previousOverflow;
   cover.focus({ preventScroll: true });
 });
