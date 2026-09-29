@@ -26,6 +26,8 @@ Al ampliar el video, este aparece como una tarjeta vertical flotante sobre la p�
 
 El reproductor intenta iniciar con audio. Cuando el navegador bloquea el sonido automático, muestra un botón para activarlo con un toque; después conserva esa elección al ampliar, cerrar y seguir navegando. Al salir del encabezado durante el desplazamiento, el mismo video se convierte en una tarjeta flotante compacta y vuelve automáticamente a su posición al regresar arriba.
 
+La tarjeta flotante se fija en la esquina superior izquierda, respetando el área segura del teléfono, para mantener libres los enlaces de TikTok y YouTube.
+
 En teléfonos, el texto y el video se mantienen lado a lado, las tres carreras comparten una fila y los cinco contactos otra. Se ocultan textos secundarios, adornos y el botón fijo inferior para conservar una distribución compacta. Los enlaces mantienen su área táctil y el video sigue ampliándose al tocarlo.
 
 Las tarjetas de WhatsApp, Instagram, Facebook, TikTok y YouTube usan los colores oficiales de cada plataforma. Los enlaces sociales y las llamadas de contacto incorporan entrada escalonada, elevación, aro expansivo y respuesta al toque. Las animaciones se desactivan cuando el dispositivo solicita movimiento reducido.

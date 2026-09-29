@@ -229,3 +229,9 @@
   .video-frame.is-floating .video-sound-toggle{min-height:29px}
 }
 @media(prefers-reduced-motion:reduce){.video-frame.is-floating{animation:none}}
+
+/* Keep the persistent player away from the social links. */
+.video-frame.is-floating{left:22px;right:auto;top:22px;bottom:auto}
+@media(max-width:760px){
+  .video-frame.is-floating{left:max(10px,env(safe-area-inset-left));right:auto;top:max(10px,env(safe-area-inset-top));bottom:auto}
+}
