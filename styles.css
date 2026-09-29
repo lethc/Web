@@ -82,10 +82,9 @@
 }
 .header-cta:active,.button.primary:active,.area-link:active,.social:active,.mobile-contact:active{transform:translateY(-1px) scale(.985);box-shadow:0 6px 13px #001b3e24}
 .header-cta:active::after,.button.primary:active::after,.area-link:active::after,.social:active::after,.mobile-contact:active::after{transform:scale(1.05);opacity:0}
-.social.whatsapp{animation:contact-rise .65s both,whatsapp-glow 2.8s 1.1s ease-in-out infinite}
+.social.whatsapp{animation:contact-rise .65s both}
 
 @keyframes contact-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes whatsapp-glow{0%,70%,100%{box-shadow:0 0 0 4px #009d1a1c}82%{box-shadow:0 0 0 9px #25d3662b,0 14px 32px #001b3e38}}
 
 @media(max-width:760px){
   .social-top>svg{width:40px;height:40px;padding:8px;border-radius:12px}
@@ -156,4 +155,37 @@
   .brand-logo-footer{height:48px}
   .footer p{display:none}
   .footer>span{font-size:11px}
+}
+
+/* Repeating halo inspired by the supplied contact animation. Keep hit areas still. */
+.header-cta,.area-link,.mobile-contact{--contact-halo:#009d1a;--pulse-delay:0s}
+.social{--contact-halo:#25d366;--pulse-delay:0s}
+.social.instagram{--contact-halo:#e94c95;--pulse-delay:-.4s}
+.social.facebook{--contact-halo:#4596ff;--pulse-delay:-.8s}
+.social.tiktok{--contact-halo:#25f4ee;--pulse-delay:-1.2s}
+.social.youtube{--contact-halo:#ff4545;--pulse-delay:-1.6s}
+.area-card:nth-child(2) .area-link{--pulse-delay:-.65s}
+.area-card:nth-child(3) .area-link{--pulse-delay:-1.3s}
+.header-cta::after,.area-link::after,.social::after,.mobile-contact::after{
+  display:block;
+  border:2px solid var(--contact-halo);
+  background:color-mix(in srgb,var(--contact-halo) 14%,transparent);
+  animation:contact-halo 2s var(--pulse-delay) ease-out infinite;
+}
+.area-link::after,.mobile-contact::after{inset:5px}
+@keyframes contact-halo{
+  0%{transform:scale(1);opacity:0}
+  15%{transform:scale(1);opacity:.6}
+  65%,100%{transform:scale(1.07,1.18);opacity:0}
+}
+@media(max-width:760px){
+  .social::after{animation-name:contact-halo-mobile}
+}
+@keyframes contact-halo-mobile{
+  0%{transform:scale(1);opacity:0}
+  15%{transform:scale(1);opacity:.6}
+  65%,100%{transform:scale(1.04,1.12);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .header-cta::after,.area-link::after,.social::after,.mobile-contact::after{animation:none;opacity:0}
 }

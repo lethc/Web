@@ -18,6 +18,8 @@ El video vertical se sirve como assets/presentacion-web.mp4 (H.264/AAC compatibl
 
 ## Interacciones de contacto
 
+Los contactos y los botones de asesoría muestran un halo de color que se expande y desvanece cada dos segundos, con ciclos escalonados. Funciona automáticamente en escritorio y móvil; respeta movimiento reducido y no desplaza las áreas de clic.
+
 En teléfonos, el texto y el video se mantienen lado a lado, las tres carreras comparten una fila y los cinco contactos otra. Se ocultan textos secundarios, adornos y el botón fijo inferior para conservar una distribución compacta. Los enlaces mantienen su área táctil y el video sigue ampliándose al tocarlo.
 
 Las tarjetas de WhatsApp, Instagram, Facebook, TikTok y YouTube usan los colores oficiales de cada plataforma. Los enlaces sociales y las llamadas de contacto incorporan entrada escalonada, elevación, aro expansivo y respuesta al toque. Las animaciones se desactivan cuando el dispositivo solicita movimiento reducido.
