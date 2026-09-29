@@ -20,6 +20,10 @@ El video vertical se sirve como assets/presentacion-web.mp4 (H.264/AAC compatibl
 
 Los contactos y los botones de asesoría muestran un halo de color que se expande y desvanece cada dos segundos, con ciclos escalonados. Funciona automáticamente en escritorio y móvil; respeta movimiento reducido y no desplaza las áreas de clic.
 
+El halo de “Asesoría gratis” usa un verde bosque más oscuro. La sección de redes incluye un letrero naranja animado “¡Haz clic aquí!” y cinco flechas, alineadas con cada canal también en teléfonos.
+
+Al ampliar el video, este aparece como una tarjeta vertical flotante sobre la página. El fondo permanece visible y atenuado para conservar el contexto, mientras el reproductor activa sonido y controles.
+
 En teléfonos, el texto y el video se mantienen lado a lado, las tres carreras comparten una fila y los cinco contactos otra. Se ocultan textos secundarios, adornos y el botón fijo inferior para conservar una distribución compacta. Los enlaces mantienen su área táctil y el video sigue ampliándose al tocarlo.
 
 Las tarjetas de WhatsApp, Instagram, Facebook, TikTok y YouTube usan los colores oficiales de cada plataforma. Los enlaces sociales y las llamadas de contacto incorporan entrada escalonada, elevación, aro expansivo y respuesta al toque. Las animaciones se desactivan cuando el dispositivo solicita movimiento reducido.

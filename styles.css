@@ -13,17 +13,17 @@
 .video-sticker{left:-100px;bottom:132px}@media(max-width:760px){.video-sticker{left:-28px;bottom:-20px}}
 /* Expanded player: keeps the full image visible on either screen orientation. */
 .video-sticker,.visual-spark,.vertical-note{pointer-events:none}
-.video-dialog{width:94vw;max-width:1100px;height:90vh;height:90dvh;max-height:calc(100dvh - 24px);padding:0;background:#00162e;color:white;border:1px solid #ffffff25;border-radius:16px;overflow:hidden}
+.video-dialog{width:min(430px,92vw);max-width:430px;height:min(88vh,820px);height:min(88dvh,820px);max-height:calc(100dvh - 24px);padding:0;background:#00162e;color:white;border:3px solid #fff;border-radius:22px;overflow:hidden;box-shadow:0 30px 100px #0012268a,0 0 0 1px #ffffff40}
 .video-dialog[open]{display:flex;flex-direction:column;animation:video-expand .25s ease-out}
-.video-dialog::backdrop{background:#001226e6;backdrop-filter:blur(8px)}
-.video-dialog-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 18px;flex-shrink:0;border-bottom:1px solid #ffffff20}
+.video-dialog::backdrop{background:#001d3f80;backdrop-filter:blur(3px) saturate(.8)}
+.video-dialog-header{position:absolute;z-index:2;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px;background:linear-gradient(#00162ed9,transparent);pointer-events:none}
 .video-dialog-header h2{font-size:18px;letter-spacing:0;margin:0;line-height:1.4}
-.video-dialog-close{display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffff40;border-radius:50%;background:#ffffff10;color:white;font-size:30px;line-height:1;flex-shrink:0}
+.video-dialog-close{display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffff70;border-radius:50%;background:#00162e99;color:white;font-size:30px;line-height:1;flex-shrink:0;pointer-events:auto;backdrop-filter:blur(6px)}
 .video-dialog-close:hover{background:#ffffff28}
 .video-dialog-player{flex:1;min-height:0;background:#000;display:flex;align-items:center;justify-content:center}
 .video-dialog-player video{width:100%;height:100%;object-fit:contain}
 @keyframes video-expand{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
-@media(max-width:760px){.video-dialog{width:96vw;height:92vh;height:92dvh;border-radius:12px}.video-dialog-header{padding:8px 12px}.video-dialog-header h2{font-size:16px}}
+@media(max-width:760px){.video-dialog{width:min(92vw,430px);height:min(88vh,820px);height:min(88dvh,820px);border-radius:18px}.video-dialog-header{padding:8px 10px}.video-dialog-header h2{font-size:16px}}
 
 /* Live preview remains visible beneath the expand affordance. */
 .video-cover{background:linear-gradient(#00254f55,transparent 25%,transparent 55%,#001b3ed9)}
@@ -158,7 +158,8 @@
 }
 
 /* Repeating halo inspired by the supplied contact animation. Keep hit areas still. */
-.header-cta,.area-link,.mobile-contact{--contact-halo:#009d1a;--pulse-delay:0s}
+.header-cta,.mobile-contact{--contact-halo:#009d1a;--pulse-delay:0s}
+.area-link{--contact-halo:#005f16;--pulse-delay:0s}
 .social{--contact-halo:#25d366;--pulse-delay:0s}
 .social.instagram{--contact-halo:#e94c95;--pulse-delay:-.4s}
 .social.facebook{--contact-halo:#4596ff;--pulse-delay:-.8s}
@@ -189,3 +190,18 @@
 @media(prefers-reduced-motion:reduce){
   .header-cta::after,.area-link::after,.social::after,.mobile-contact::after{animation:none;opacity:0}
 }
+
+/* Bright, Temu-inspired prompt that points to every social contact. */
+.social-click-callout{margin:28px 0 -25px;position:relative;z-index:3;text-align:center;pointer-events:none}
+.social-click-callout>span{display:inline-block;padding:7px 22px;border-radius:999px;background:linear-gradient(135deg,#ffd400,#ff7200);color:#572000;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 7px 0 #b83900,0 12px 24px #00122660;animation:click-sign 1.4s ease-in-out infinite}
+.social-click-arrows{display:grid;grid-template-columns:1.25fr repeat(4,1fr);gap:12px;margin-top:7px;color:#ffd400;font:900 30px/1 Manrope,sans-serif}
+.social-click-arrows i{font-style:normal;text-shadow:0 4px 0 #ff7200;animation:click-arrow .9s ease-in-out infinite}
+.social-click-arrows i:nth-child(2){animation-delay:-.15s}.social-click-arrows i:nth-child(3){animation-delay:-.3s}.social-click-arrows i:nth-child(4){animation-delay:-.45s}.social-click-arrows i:nth-child(5){animation-delay:-.6s}
+@keyframes click-sign{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes click-arrow{0%,100%{transform:translateY(0);opacity:.65}50%{transform:translateY(7px) scale(1.15);opacity:1}}
+@media(max-width:760px){
+  .social-click-callout{margin:18px 0 -13px}
+  .social-click-callout>span{padding:5px 14px;font-size:11px;box-shadow:0 4px 0 #b83900,0 8px 16px #00122655}
+  .social-click-arrows{grid-template-columns:repeat(5,1fr);gap:6px;margin-top:5px;font-size:20px}
+}
+@media(prefers-reduced-motion:reduce){.social-click-callout>span,.social-click-arrows i{animation:none}}
