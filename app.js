@@ -91,3 +91,39 @@ videoDialog.addEventListener('close', () => {
 });
 if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.section-heading,.area-card,.community-intro,.social').forEach((el,i)=>{el.classList.add('reveal');el.style.transitionDelay=`${i%3*70}ms`;observer.observe(el);});}
 document.getElementById('year').textContent=new Date().getFullYear();
+
+// Full service details open only on click/tap or keyboard activation.
+const serviceDialog = document.getElementById('service-dialog');
+const serviceContent = serviceDialog.querySelector('.service-dialog-content');
+let serviceTrigger = null;
+let serviceScrollOverflow = '';
+
+document.querySelectorAll('.service-card').forEach(card => {
+  const trigger = card.querySelector('.service-image');
+  const preview = card.querySelector('.service-tooltip');
+  trigger.addEventListener('click', () => {
+    serviceTrigger = trigger;
+    const details = preview.querySelector('.service-detail').cloneNode(true);
+    details.querySelector('h3').id = 'service-dialog-title';
+    const image = trigger.querySelector('img').cloneNode(true);
+    image.className = 'service-dialog-image';
+    image.loading = 'eager';
+    const body = document.createElement('div');
+    body.className = 'service-dialog-body';
+    body.append(details, card.querySelector('.service-cta').cloneNode(true));
+    serviceContent.replaceChildren(image, body);
+    serviceScrollOverflow = document.documentElement.style.overflow;
+    serviceDialog.showModal();
+    document.documentElement.style.overflow = 'hidden';
+  });
+});
+serviceDialog.querySelector('.service-dialog-close').addEventListener('click', () => serviceDialog.close());
+serviceDialog.addEventListener('click', event => {
+  if (event.target !== serviceDialog) return;
+  const rect = serviceDialog.getBoundingClientRect();
+  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) serviceDialog.close();
+});
+serviceDialog.addEventListener('close', () => {
+  document.documentElement.style.overflow = serviceScrollOverflow;
+  serviceTrigger?.focus({ preventScroll: true });
+});
