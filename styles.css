@@ -322,3 +322,11 @@
   .service-dialog-close{background:#fffffff2}
   .service-dialog .service-detail h3{font-size:24px}
 }
+
+/* Icono de WhatsApp en el botón "Conversemos" */
+.header-cta{gap:12px;padding:6px 7px 6px 22px}
+.header-cta svg{width:30px;height:30px;padding:6px;border-radius:50%;background:var(--green);color:#fff;stroke-width:1.8;transition:transform .25s ease}
+.header-cta:hover svg{transform:rotate(-8deg) scale(1.08)}
+@media(max-width:760px){.header-cta{padding:5px 6px 5px 15px;gap:8px}.header-cta svg{width:28px;height:28px;padding:5px}}
+@media(max-width:360px){.header-cta{padding:5px}}
+@media(prefers-reduced-motion:reduce){.header-cta svg{transition:none}.header-cta:hover svg{transform:none}}
