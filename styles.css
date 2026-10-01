@@ -214,6 +214,9 @@
 .video-sound-toggle[aria-pressed="true"]{background:#005f16}
 .sound-icon{font-size:15px;line-height:1}
 .video-frame.is-floating{position:fixed;z-index:40;right:22px;bottom:22px;width:168px;height:auto;transform:none;border-width:3px;border-radius:15px;box-shadow:0 22px 55px #00122670;animation:video-float-in .32s ease-out}
+.video-floating-close{display:none}
+.video-frame.is-floating .video-floating-close{position:absolute;z-index:6;top:7px;left:7px;display:grid;place-items:center;width:28px;height:28px;padding:0;border:0;border-radius:7px;background:transparent;color:#fff;text-shadow:0 2px 7px #001226,0 0 3px #001226;font-size:23px;font-weight:400;line-height:1;transition:transform .2s,background .2s,opacity .2s;opacity:.82}
+.video-frame.is-floating .video-floating-close:hover,.video-frame.is-floating .video-floating-close:focus-visible{transform:scale(1.06);background:#001d3f70;opacity:1}
 .video-frame.is-floating .video-top,.video-frame.is-floating .video-bottom small,.video-frame.is-floating .video-bottom b{display:none}
 .video-frame.is-floating .video-cover{padding:10px 7px 52px;justify-content:flex-end;background:linear-gradient(transparent 55%,#001b3ed9)}
 .video-frame.is-floating .play-circle{width:35px;height:35px;font-size:21px;box-shadow:0 0 0 5px #ffffff20}
@@ -227,6 +230,7 @@
   .video-frame.is-floating{right:10px;bottom:10px;width:112px;border-width:2px;border-radius:12px}
   .video-frame.is-floating .video-cover{padding-bottom:43px}
   .video-frame.is-floating .video-sound-toggle{min-height:29px}
+  .video-frame.is-floating .video-floating-close{top:4px;left:4px;width:24px;height:24px;font-size:19px}
 }
 @media(prefers-reduced-motion:reduce){.video-frame.is-floating{animation:none}}
 
@@ -234,4 +238,15 @@
 .video-frame.is-floating{left:22px;right:auto;top:22px;bottom:auto}
 @media(max-width:760px){
   .video-frame.is-floating{left:max(10px,env(safe-area-inset-left));right:auto;top:max(10px,env(safe-area-inset-top));bottom:auto}
+}
+
+/* Requested career order and supplied professional portraits. */
+.area-card[data-area="biomedicas"]{order:1}
+.area-card[data-area="ingenierias"]{order:2}
+.area-card[data-area="sociales"]{order:3}
+.portrait-2{background-image:url('assets/sociales-retrato.jpeg');background-size:115% auto;background-position:center 28%}
+.portrait-3{background-image:url('assets/ingenierias-retrato.jpeg');background-size:115% auto;background-position:center 22%}
+@media(max-width:760px){
+  .portrait-2{background-image:url('assets/sociales-medio-cuerpo.webp');background-size:118% auto;background-position:center 12%}
+  .portrait-3{background-image:url('assets/ingenierias-medio-cuerpo.webp');background-size:118% auto;background-position:center 12%}
 }

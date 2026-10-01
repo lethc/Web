@@ -1,6 +1,7 @@
 const video = document.getElementById('intro-video');
 const cover = document.getElementById('video-cover');
 const soundToggle = document.getElementById('video-sound-toggle');
+const floatingClose = document.getElementById('video-floating-close');
 const videoDialog = document.getElementById('video-dialog');
 const videoHome = video.parentElement;
 const videoAnchor = document.querySelector('.hero-visual');
@@ -8,6 +9,7 @@ const player = videoDialog.querySelector('.video-dialog-player');
 let previousOverflow = '';
 let heroVideoIsVisible = true;
 let soundEnabled = false;
+let floatingDismissed = false;
 
 const updateSoundButton = () => {
   const soundOn = !video.muted;
@@ -44,10 +46,16 @@ soundToggle.addEventListener('click', async () => {
 if ('IntersectionObserver' in window) {
   const floatingObserver = new IntersectionObserver(([entry]) => {
     heroVideoIsVisible = entry.isIntersecting;
-    videoHome.classList.toggle('is-floating', !heroVideoIsVisible && !videoDialog.open);
+    if (heroVideoIsVisible) floatingDismissed = false;
+    videoHome.classList.toggle('is-floating', !heroVideoIsVisible && !videoDialog.open && !floatingDismissed);
   }, { threshold: .18 });
   floatingObserver.observe(videoAnchor);
 }
+
+floatingClose.addEventListener('click', () => {
+  floatingDismissed = true;
+  videoHome.classList.remove('is-floating');
+});
 
 
 cover.addEventListener('click', async () => {
@@ -76,7 +84,7 @@ videoDialog.addEventListener('close', () => {
   video.controls = false;
   videoHome.prepend(video);
   video.play().catch(() => {});
-  videoHome.classList.toggle('is-floating', !heroVideoIsVisible);
+  videoHome.classList.toggle('is-floating', !heroVideoIsVisible && !floatingDismissed);
   updateSoundButton();
   document.documentElement.style.overflow = previousOverflow;
   cover.focus({ preventScroll: true });
