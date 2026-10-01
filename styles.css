@@ -258,9 +258,13 @@
 .services-heading h2{font-size:34px}
 .services-heading>p{margin-top:15px;color:#526677;font-size:14px}
 .services-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
-.service-card{position:relative;min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid #d4e0e5;border-radius:16px;box-shadow:0 12px 32px #00254f09;transition:box-shadow .25s,border-color .25s}
-.service-card:hover{border-color:#a4c9b0;box-shadow:0 16px 36px #00254f15}
+.service-card{position:relative;isolation:isolate;min-width:0;display:flex;flex-direction:column;background:linear-gradient(155deg,#f0f8f3,#f7fafc 75%);border:1px solid #d4e0e5;border-radius:16px;box-shadow:0 12px 32px #00254f09;transition:transform .3s ease,box-shadow .3s ease}
+.service-card::after{content:'';position:absolute;z-index:3;inset:-1px;border:2px solid #006b32;border-radius:17px;pointer-events:none;opacity:0;transition:opacity .3s ease}
+@media(hover:hover){.service-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px #00254f20}.service-card:hover::after{opacity:1}}
+.service-card:focus-within::after{opacity:1}
 .service-media{position:relative}
+/* One overlapping curve avoids a colored seam during hover compositing. */
+.service-media::after{content:'';position:absolute;z-index:2;bottom:-2px;left:0;right:0;height:25px;background:#f0f8f3;clip-path:ellipse(75% 100% at 65% 100%);pointer-events:none}
 .service-image{display:block;position:relative;width:100%;padding:0;border:0;border-radius:15px 15px 0 0;overflow:hidden;background:#e6eef0;text-align:left}
 .service-image img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;transition:transform .35s}
 .service-image:hover img{transform:scale(1.025)}
@@ -270,13 +274,16 @@
 .service-image:focus-visible .service-image-hint{opacity:1;clip-path:inset(0);transform:none}
 @media(hover:none){.service-image-hint{opacity:1;clip-path:inset(0);transform:none}}
 .service-summary{padding:23px 22px 20px;flex:1}
-.service-category{font-size:9px;letter-spacing:1.1px;font-weight:750;color:#078024}
+.service-category{display:inline-block;padding:5px 9px;border:1px solid #c8e3d2;border-radius:20px;background:#e4f2e9;font-size:9px;letter-spacing:1px;font-weight:750;color:#00652e}
 .service-summary h3{font-size:24px;line-height:1.25;letter-spacing:-.7px;margin:9px 0 12px}
 .service-summary p{font-size:13px;line-height:1.7;color:#647381}
-.service-cta{margin:0 18px 20px;padding:12px 15px;min-height:48px;border-radius:9px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--navy);color:#fff;font-size:13px;font-weight:700;transition:background .2s,transform .2s,box-shadow .2s}
-.service-cta>span{display:grid;place-items:center;flex-shrink:0;width:27px;height:27px;border-radius:50%;background:#008c1a;font-size:18px}
-.service-cta:hover{background:#004074;transform:translateY(-2px);box-shadow:0 8px 20px #00254f22}
-.service-cta:active{transform:translateY(0)}
+.service-cta{position:relative;isolation:isolate;overflow:hidden;margin:0 18px 20px;padding:14px 48px;min-height:52px;border-radius:11px;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(110deg,#00254f,#004266);color:#fff;font-size:13px;font-weight:700;box-shadow:0 5px 12px #00254f12;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.service-cta>span{position:absolute;right:12px;top:50%;display:grid;place-items:center;width:27px;height:27px;transform:translateY(-50%);border-radius:50%;background:#00852f;color:white;font-size:18px;transition:transform .3s ease,background .3s ease}
+.service-cta::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 25%,#ffffff22 50%,transparent 75%);transform:translateX(-110%);transition:transform .6s ease}
+.service-cta:hover,.service-cta:focus-visible{background:linear-gradient(110deg,#004f35,#006b32);transform:translateY(-3px);box-shadow:0 9px 20px #006b3230}
+.service-cta:hover::before,.service-cta:focus-visible::before{transform:translateX(110%)}
+.service-cta:hover>span,.service-cta:focus-visible>span{background:#ffffff24;transform:translate(2px,calc(-50% - 2px)) rotate(8deg)}
+.service-cta:active{transform:translateY(0) scale(.98);box-shadow:0 2px 6px #006b3220}
 .service-tooltip{display:none}
 .service-detail-kicker{display:block;color:#078024;font-size:9px;font-weight:750;letter-spacing:1px}
 .service-detail h3{font-size:22px;margin:8px 0 13px;letter-spacing:-.6px;line-height:1.3}
