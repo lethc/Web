@@ -10,7 +10,7 @@
         />
         <title>Tesis GAMT — Tu siguiente gran paso</title>
         <link rel="icon" type="image/png" href="assets/logo-gamt.png" />
-        <link rel="stylesheet" href="styles.css?v=18" />
+        <link rel="stylesheet" href="styles.css?v=19" />
     </head>
     <body>
         <svg class="svg-library" aria-hidden="true" focusable="false">
@@ -30,6 +30,7 @@
                 <a href="#nosotros">Nosotros</a
                 ><a href="#areas">Áreas de asesoría</a
                 ><a href="#comunidad">Comunidad</a>
+                <a href="#pago-yape">Pagos</a>
             </nav>
             <a
                 class="header-cta"
@@ -430,6 +431,40 @@
                     </div>
                 </div>
             </section>
+            <section class="payment section-wrap" id="pago-yape" aria-labelledby="payment-title">
+                <header class="payment-heading">
+                    <span class="eyebrow">TESIS GAMT · PAGOS</span>
+                    <h2 id="payment-title">Realiza tu pago por <em>Yape</em></h2>
+                    <p>Dos pasos sencillos para completar tu pago.</p>
+                </header>
+                <ol class="payment-steps">
+                    <li class="payment-step">
+                        <div class="payment-step-heading"><span class="payment-number" aria-hidden="true">1</span><h3>Paga mediante Yape</h3></div>
+                        <p>Yapea al siguiente número:</p>
+                        <div class="payment-recipient"><span>A nombre de</span><strong>Gonzalo Manrique Tejada</strong></div>
+                        <button class="payment-copy" id="yape-copy" type="button" data-copy-number="936750337" aria-label="Copiar número de Yape: 936 750 337" aria-describedby="yape-instruction">
+                            <span class="payment-copy-number">936 750 337</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+                            <span class="payment-copy-label" id="yape-copy-label">Copiar número</span>
+                        </button>
+                        <p class="payment-status" id="yape-status" role="status" aria-live="polite" aria-atomic="true"></p>
+                        <div class="payment-manual" id="yape-manual" hidden>
+                            <label for="yape-manual-number">Mantén pulsado el número para copiarlo manualmente:</label>
+                            <input id="yape-manual-number" type="text" value="936750337" readonly inputmode="numeric" aria-label="Número de Yape para copiar manualmente" />
+                        </div>
+                        <p class="payment-instruction" id="yape-instruction"><strong>Luego, abre Yape en tu celular.</strong> Pega el número, comprueba el nombre del destinatario y realiza el pago por el monto acordado.</p>
+                    </li>
+                    <li class="payment-step">
+                        <div class="payment-step-heading"><span class="payment-number" aria-hidden="true">2</span><h3>Envía tu comprobante</h3></div>
+                        <p>Una vez realizado el pago, toma una captura de tu comprobante y envíanosla por WhatsApp para verificar tu pago.</p>
+                        <div class="payment-receipt-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8h6M9 12h6"/></svg><span>Guarda la captura y vuelve aquí para enviarla.</span></div>
+                        <a class="service-cta payment-whatsapp" id="payment-whatsapp" href="https://wa.me/51950580576?text=Hola%2C%20acabo%20de%20realizar%20mi%20pago%20por%20Yape.%20Adjunto%20la%20captura%20de%20mi%20comprobante%20para%20su%20verificaci%C3%B3n." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Enviar comprobante por WhatsApp</a>
+                        <p class="payment-help">El chat se abrirá con el mensaje preparado. Adjunta tu captura manualmente antes de enviarlo.</p>
+                        <p class="payment-thanks">Gracias por tu confianza. Nuestro equipo verificará tu comprobante.</p>
+                    </li>
+                </ol>
+                <noscript><p>Copia manualmente el número 936750337 y abre Yape. Después, usa el botón de WhatsApp para enviar tu comprobante.</p></noscript>
+            </section>
         </main>
         <footer class="footer section-wrap">
             <a class="brand" href="#inicio" aria-label="GAMT Investigación, inicio">
@@ -476,5 +511,6 @@
             <div class="service-dialog-content"></div>
         </dialog>
         <script src="app.js?v=8"></script>
+        <script src="payment.js?v=1"></script>
     </body>
 </html>
