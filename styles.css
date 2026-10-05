@@ -402,3 +402,6 @@
  .payment-whatsapp{padding:15px 12px;font-size:14px;gap:10px}
  .payment-manual input{min-width:0}
 }
+
+/* Título de pago: logo oficial de Yape (burbuja + wordmark) en lugar de texto */
+.payment-heading h2 .payment-yape-wordmark{display:inline-block;width:auto;height:1.95em;max-width:none;vertical-align:-.46em;margin:-.5em 0 -.1em .14em}
