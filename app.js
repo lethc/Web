@@ -97,12 +97,13 @@ const serviceDialog = document.getElementById('service-dialog');
 const serviceContent = serviceDialog.querySelector('.service-dialog-content');
 let serviceTrigger = null;
 let serviceScrollOverflow = '';
+let disposePayment = () => {};
 
 document.querySelectorAll('.service-card').forEach(card => {
   const trigger = card.querySelector('.service-image');
   const preview = card.querySelector('.service-tooltip');
-  trigger.addEventListener('click', () => {
-    serviceTrigger = trigger;
+  const openService = (source, focusPayment = false) => {
+    serviceTrigger = source;
     const details = preview.querySelector('.service-detail').cloneNode(true);
     details.querySelector('h3').id = 'service-dialog-title';
     const image = trigger.querySelector('img').cloneNode(true);
@@ -110,12 +111,30 @@ document.querySelectorAll('.service-card').forEach(card => {
     image.loading = 'eager';
     const body = document.createElement('div');
     body.className = 'service-dialog-body';
-    body.append(details, card.querySelector('.service-cta').cloneNode(true));
-    serviceContent.replaceChildren(image, body);
+    body.append(details);
+    const payment = document.getElementById('payment-template').content.cloneNode(true);
+    disposePayment();
+    serviceContent.replaceChildren(image, body, payment);
+    disposePayment = window.initializePayment(serviceContent.querySelector('.payment'));
     serviceScrollOverflow = document.documentElement.style.overflow;
     serviceDialog.showModal();
+    serviceDialog.scrollTop = 0;
     document.documentElement.style.overflow = 'hidden';
-  });
+    if (focusPayment) {
+      const heading = serviceContent.querySelector('#payment-title');
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+      requestAnimationFrame(() => {
+        if (!serviceDialog.open) return;
+        const payment = serviceContent.querySelector('.payment');
+        const top = payment.getBoundingClientRect().top - serviceDialog.getBoundingClientRect().top + serviceDialog.scrollTop;
+        serviceDialog.scrollTo({ top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      });
+    }
+  };
+  trigger.addEventListener('click', () => openService(trigger));
+  const paymentTrigger = card.querySelector('.service-payment-trigger');
+  paymentTrigger.addEventListener('click', () => openService(paymentTrigger, true));
 });
 serviceDialog.querySelector('.service-dialog-close').addEventListener('click', () => serviceDialog.close());
 serviceDialog.addEventListener('click', event => {
@@ -124,6 +143,7 @@ serviceDialog.addEventListener('click', event => {
   if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) serviceDialog.close();
 });
 serviceDialog.addEventListener('close', () => {
+  disposePayment();
   document.documentElement.style.overflow = serviceScrollOverflow;
   serviceTrigger?.focus({ preventScroll: true });
 });

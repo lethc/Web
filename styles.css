@@ -378,3 +378,27 @@
  .payment-copy-number{font-size:28px;letter-spacing:.5px}
  .payment-recipient strong{font-size:17px}
 }
+
+/* Payment belongs to the expanded service, with two steps side by side. */
+.service-dialog .payment{grid-column:1/-1;padding:28px;border-top:1px solid #d8e8df;min-width:0}
+.payment-yape-logo{width:48px;height:48px;object-fit:contain;border-radius:12px;margin-left:auto;flex-shrink:0}
+.service-dialog .payment-step{padding:20px}
+.service-dialog .payment-step h3{font-size:19px}
+.service-dialog .payment-whatsapp{margin:0 0 14px}
+.service-dialog .payment-copy-number{font-size:clamp(18px,3vw,30px)}
+/* Match the existing link buttons while using native dialog actions. */
+.service-payment-trigger{border:0;width:calc(100% - 36px)}
+@media(max-width:760px){
+ .payment-steps{grid-template-columns:1fr;gap:18px}
+ .service-dialog .payment{padding:24px 14px}
+ .service-dialog .payment-step{padding:20px 16px;border-radius:16px}
+ .payment-step-heading{gap:10px;margin-bottom:20px}
+ .service-dialog .payment-step h3{font-size:19px}
+ .payment-yape-logo{width:38px;height:38px;border-radius:9px}
+ .payment-number{width:32px;height:32px;font-size:19px}
+ .service-dialog .payment-copy-number{font-size:clamp(24px,7vw,30px)}
+ .payment-copy{padding:16px 12px}
+ .payment-copy svg{width:22px;height:22px}
+ .payment-whatsapp{padding:15px 12px;font-size:14px;gap:10px}
+ .payment-manual input{min-width:0}
+}
